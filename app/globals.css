@@ -10,6 +10,19 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-bordo-50: #fdf2f4;
+  --color-bordo-100: #fce7eb;
+  --color-bordo-200: #f8d0d9;
+  --color-bordo-300: #f2aab9;
+  --color-bordo-400: #e97892;
+  --color-bordo-500: #db4a6f;
+  --color-bordo-600: #c52b52;
+  --color-bordo-700: #a61b3d;
+  --color-bordo-800: #800020;
+  --color-bordo-900: #780823;
+  --color-bordo-950: #45020f;
+  --color-bordo: var(--color-bordo-800);
 }
 
 @media (prefers-color-scheme: dark) {
