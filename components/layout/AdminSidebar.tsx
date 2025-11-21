@@ -6,8 +6,22 @@ import { cn } from '@/lib/utils';
 import { LayoutDashboard, FileText, LogOut, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
+import { useAuth } from '@/lib/supabase/auth';
+import { useRouter } from 'next/navigation';
+
 export function AdminSidebar() {
     const pathname = usePathname();
+    const { signOut } = useAuth();
+    const router = useRouter();
+
+    const handleLogout = async () => {
+        try {
+            await signOut();
+            router.push('/admin/login');
+        } catch (error) {
+            console.error('Error signing out:', error);
+        }
+    };
 
     const links = [
         { href: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -43,7 +57,11 @@ export function AdminSidebar() {
                     })}
                 </nav>
                 <div className="border-t border-gray-200 pt-4">
-                    <Button variant="ghost" className="w-full justify-start text-red-600 hover:bg-red-50 hover:text-red-700">
+                    <Button
+                        variant="ghost"
+                        className="w-full justify-start text-red-600 hover:bg-red-50 hover:text-red-700"
+                        onClick={handleLogout}
+                    >
                         <LogOut className="mr-2 h-4 w-4" />
                         Sair
                     </Button>

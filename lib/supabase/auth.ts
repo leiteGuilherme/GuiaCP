@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { onAuthStateChanged, User, signOut as firebaseSignOut } from 'firebase/auth';
-import { auth } from './config';
+import { User } from '@supabase/supabase-js';
+import { supabase } from './client';
 import { useRouter } from 'next/navigation';
 
 export function useAuth() {
@@ -9,21 +9,25 @@ export function useAuth() {
     const router = useRouter();
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setUser(user);
-            } else {
-                setUser(null);
-            }
+        // Get initial session
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            setUser(session?.user ?? null);
             setLoading(false);
         });
 
-        return () => unsubscribe();
+        // Listen for auth changes
+        const {
+            data: { subscription },
+        } = supabase.auth.onAuthStateChange((_event, session) => {
+            setUser(session?.user ?? null);
+        });
+
+        return () => subscription.unsubscribe();
     }, []);
 
     const signOut = async () => {
         try {
-            await firebaseSignOut(auth);
+            await supabase.auth.signOut();
             router.push('/admin/login');
         } catch (error) {
             console.error('Error signing out', error);

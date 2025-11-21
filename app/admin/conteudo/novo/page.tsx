@@ -1,7 +1,7 @@
 'use client';
 
 import { ContentForm } from '@/components/features/ContentForm';
-import { addContent } from '@/firebase/firestore';
+import { addContent } from '@/lib/supabase/database';
 
 export default function NewContentPage() {
     return (

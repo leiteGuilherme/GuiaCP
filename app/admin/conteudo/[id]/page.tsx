@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { ContentForm } from '@/components/features/ContentForm';
-import { getContent, updateContent, Content } from '@/firebase/firestore';
+import { getContent, updateContent, Content } from '@/lib/supabase/database';
 import { Spinner } from '@/components/ui/Spinner';
 
 export default function EditContentPage() {

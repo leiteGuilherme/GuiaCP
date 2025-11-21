@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { getContent, Content } from '@/firebase/firestore';
+import { getContent, Content } from '@/lib/supabase/database';
 import { Spinner } from '@/components/ui/Spinner';
 import { Button } from '@/components/ui/Button';
 import { ArrowLeft } from 'lucide-react';
@@ -61,28 +61,63 @@ export default function ContentDetailPage() {
                     </h1>
                 </header>
 
-                {content.imageUrl && (
+                {content.image_url && (
                     <div className="mb-10 rounded-xl overflow-hidden shadow-lg">
                         <img
-                            src={content.imageUrl}
+                            src={content.image_url}
                             alt={content.title}
                             className="w-full h-auto object-cover max-h-[600px]"
                         />
                     </div>
                 )}
 
-                <div className="prose prose-lg prose-gray max-w-none mb-12">
+                <div className="prose prose-lg max-w-none mb-12 text-gray-900 font-medium prose-headings:text-gray-900 prose-p:text-gray-900 prose-strong:text-gray-900 prose-li:text-gray-900">
                     <p className="whitespace-pre-wrap">{content.description}</p>
                 </div>
 
-                {content.videoUrl && (
+                <div className="space-y-12">
+                    {content.blocks?.map((block) => (
+                        <div key={block.id}>
+                            {block.type === 'text' && (
+                                <div className="prose prose-lg max-w-none text-gray-900 font-medium prose-headings:text-gray-900 prose-p:text-gray-900 prose-strong:text-gray-900 prose-li:text-gray-900">
+                                    <p className="whitespace-pre-wrap">{block.content}</p>
+                                </div>
+                            )}
+
+                            {block.type === 'image' && (
+                                <div className="rounded-xl overflow-hidden shadow-lg">
+                                    <img
+                                        src={block.content}
+                                        alt="Imagem do conteúdo"
+                                        className="w-full h-auto object-cover"
+                                    />
+                                </div>
+                            )}
+
+                            {block.type === 'video' && (
+                                <div className="aspect-video rounded-xl overflow-hidden shadow-lg bg-black">
+                                    <iframe
+                                        src={block.content.replace('watch?v=', 'embed/')}
+                                        className="w-full h-full"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    />
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+
+                {content.video_url && !content.blocks?.some(b => b.type === 'video') && (
                     <div className="mb-12">
                         <h2 className="text-2xl font-bold text-gray-900 mb-4">Vídeo Explicativo</h2>
                         <div className="aspect-video rounded-xl overflow-hidden shadow-lg bg-black">
-                            <video controls className="w-full h-full">
-                                <source src={content.videoUrl} type="video/mp4" />
-                                Seu navegador não suporta a tag de vídeo.
-                            </video>
+                            <iframe
+                                src={content.video_url.replace('watch?v=', 'embed/')}
+                                className="w-full h-full"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            />
                         </div>
                     </div>
                 )}
