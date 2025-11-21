@@ -43,6 +43,7 @@ export function Header() {
                     >
                         Acessar Portal
                     </Link>
+                    <span className="text-xs text-gray-400">V1.0.0</span>
                 </nav>
 
                 {/* Mobile Menu Button */}
