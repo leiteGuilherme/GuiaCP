@@ -11,13 +11,6 @@ const isConfigured =
     supabaseAnonKey !== 'your_supabase_anon_key' &&
     supabaseUrl.startsWith('http');
 
-if (!isConfigured) {
-    console.error('⚠️ Supabase não está configurado!');
-    console.error('Por favor, configure as variáveis de ambiente no arquivo .env.local:');
-    console.error('- NEXT_PUBLIC_SUPABASE_URL');
-    console.error('- NEXT_PUBLIC_SUPABASE_ANON_KEY');
-    console.error('Veja o arquivo SUPABASE_SETUP.md para instruções completas.');
-}
 
 // Create client with fallback values to prevent errors during build
 export const supabase = createClient(
