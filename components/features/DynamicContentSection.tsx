@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { getAllContent, Content } from '@/firebase/firestore';
+import { getAllContent, Content } from '@/lib/supabase/database';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { ArrowRight, PlayCircle, Image as ImageIcon } from 'lucide-react';
@@ -58,9 +58,9 @@ export function DynamicContentSection() {
                     {contents.map((content) => (
                         <Card key={content.id} className="overflow-hidden flex flex-col h-full hover:shadow-lg transition-shadow">
                             <div className="aspect-video relative bg-gray-200 group">
-                                {content.imageUrl ? (
+                                {content.image_url ? (
                                     <img
-                                        src={content.imageUrl}
+                                        src={content.image_url}
                                         alt={content.title}
                                         className="w-full h-full object-cover transition-transform group-hover:scale-105"
                                     />
@@ -69,7 +69,7 @@ export function DynamicContentSection() {
                                         <ImageIcon className="h-12 w-12" />
                                     </div>
                                 )}
-                                {content.videoUrl && (
+                                {content.video_url && (
                                     <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
                                         <PlayCircle className="h-12 w-12 text-white" />
                                     </div>
