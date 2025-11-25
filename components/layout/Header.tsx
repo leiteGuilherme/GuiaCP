@@ -41,7 +41,7 @@ export function Header() {
                         href="/admin/login"
                         className="px-5 py-2.5 bg-brand text-white rounded-full hover:bg-brand-light transition-all shadow-lg shadow-brand/20"
                     >
-                        Acessar Portal
+                        Login
                     </Link>
                     <span className="text-xs text-gray-400">V1.0.0</span>
                 </nav>
