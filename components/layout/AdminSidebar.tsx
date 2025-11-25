@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { LayoutDashboard, FileText, LogOut, Settings } from 'lucide-react';
+import { LayoutDashboard, FileText, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
 import { useAuth } from '@/lib/supabase/auth';
@@ -17,7 +17,7 @@ export function AdminSidebar() {
     const handleLogout = async () => {
         try {
             await signOut();
-            router.push('/admin/login');
+            router.push('/');
         } catch (error) {
             console.error('Error signing out:', error);
         }
@@ -26,7 +26,6 @@ export function AdminSidebar() {
     const links = [
         { href: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard },
         { href: '/admin/conteudo', label: 'Conteúdos', icon: FileText },
-        { href: '/admin/configuracoes', label: 'Configurações', icon: Settings },
     ];
 
     return (
