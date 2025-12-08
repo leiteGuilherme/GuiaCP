@@ -85,12 +85,61 @@ export default function ContentDetailPage() {
                             )}
 
                             {block.type === 'image' && (
-                                <div className="rounded-xl overflow-hidden shadow-lg">
+                                <div className={`rounded-xl overflow-hidden shadow-lg mx-auto ${block.settings?.width ? '' : 'w-full'}`} style={{ width: block.settings?.width || '100%' }}>
                                     <img
                                         src={block.content}
                                         alt="Imagem do conteúdo"
                                         className="w-full h-auto object-cover"
                                     />
+                                </div>
+                            )}
+
+                            {block.type === 'image-text' && (
+                                <div className={`flex flex-col gap-8 ${block.settings?.layout === 'side-by-side' ? 'md:flex-row md:items-start' : ''}`}>
+                                    {block.settings?.layout === 'side-by-side' && block.settings?.imagePosition === 'right' ? (
+                                        <>
+                                            <div className="prose prose-lg max-w-none text-gray-900 font-medium flex-1">
+                                                <p className="whitespace-pre-wrap">{block.content}</p>
+                                            </div>
+                                            <div className="flex-1" style={{ maxWidth: block.settings?.width || '50%' }}>
+                                                <div className="rounded-xl overflow-hidden shadow-lg">
+                                                    <img
+                                                        src={block.settings?.imageUrl}
+                                                        alt="Imagem do conteúdo"
+                                                        className="w-full h-auto object-cover"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </>
+                                    ) : block.settings?.layout === 'side-by-side' ? (
+                                        <>
+                                            <div className="flex-1" style={{ maxWidth: block.settings?.width || '50%' }}>
+                                                <div className="rounded-xl overflow-hidden shadow-lg">
+                                                    <img
+                                                        src={block.settings?.imageUrl}
+                                                        alt="Imagem do conteúdo"
+                                                        className="w-full h-auto object-cover"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="prose prose-lg max-w-none text-gray-900 font-medium flex-1">
+                                                <p className="whitespace-pre-wrap">{block.content}</p>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="rounded-xl overflow-hidden shadow-lg mx-auto" style={{ width: block.settings?.width || '100%' }}>
+                                                <img
+                                                    src={block.settings?.imageUrl}
+                                                    alt="Imagem do conteúdo"
+                                                    className="w-full h-auto object-cover"
+                                                />
+                                            </div>
+                                            <div className="prose prose-lg max-w-none text-gray-900 font-medium">
+                                                <p className="whitespace-pre-wrap">{block.content}</p>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
                             )}
 
