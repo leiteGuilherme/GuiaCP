@@ -67,18 +67,25 @@ export default function ContentListPage() {
                     <h1 className="text-3xl font-bold text-gray-900">Conteúdos</h1>
                     <p className="text-gray-600 mt-1">Gerencie os conteúdos educacionais</p>
                 </div>
-                <Link href="/admin/conteudo/novo">
-                    <Button variant="primary" size="lg" className="shadow-lg">
-                        <Plus className="mr-2 h-5 w-5" />
-                        Novo Conteúdo
-                    </Button>
-                </Link>
+                <div className="flex gap-3">
+                    <Link href="/admin/pastas">
+                        <Button variant="outline" size="lg">
+                            Gerenciar Pastas
+                        </Button>
+                    </Link>
+                    <Link href="/admin/conteudo/novo">
+                        <Button variant="primary" size="lg" className="shadow-lg">
+                            <Plus className="mr-2 h-5 w-5" />
+                            Novo Conteúdo
+                        </Button>
+                    </Link>
+                </div>
             </div>
 
             <div className="flex items-center gap-4 bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-                <span className="text-sm font-medium text-gray-700">Filtrar por categoria:</span>
+                <span className="text-sm font-bold text-bordo-700">Filtrar por categoria:</span>
                 <select
-                    className="flex h-10 w-[200px] rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-bordo-500 focus:border-transparent"
+                    className="flex h-10 w-[200px] rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-bold text-bordo-700 focus:outline-none focus:ring-2 focus:ring-bordo-500 focus:border-transparent"
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
                 >

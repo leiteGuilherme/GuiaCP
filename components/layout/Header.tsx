@@ -43,7 +43,7 @@ export function Header() {
                     >
                         Login
                     </Link>
-                    <span className="text-xs text-gray-400">V1.0.0</span>
+                    <span className="text-xs text-gray-400">V1.1.0</span>
                 </nav>
 
                 {/* Mobile Menu Button */}
