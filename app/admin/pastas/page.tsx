@@ -51,18 +51,18 @@ export default function FoldersPage() {
             fetchFolders();
         } catch (error) {
             console.error('Error saving folder:', error);
-            alert('Erro ao salvar pasta.');
+            alert('Erro ao salvar módulo.');
         }
     };
 
     const handleDelete = async (id: string) => {
-        if (confirm('Tem certeza que deseja excluir esta pasta? Conteúdos dentro dela não serão excluídos, apenas desvinculados.')) {
+        if (confirm('Tem certeza que deseja excluir este módulo? Conteúdos dentro dela não serão excluídos, apenas desvinculados.')) {
             try {
                 await deleteFolder(id);
                 fetchFolders();
             } catch (error) {
                 console.error('Error deleting folder:', error);
-                alert('Erro ao excluir pasta.');
+                alert('Erro ao excluir módulo.');
             }
         }
     };
@@ -78,8 +78,8 @@ export default function FoldersPage() {
                         </Button>
                     </Link>
                     <div>
-                        <h1 className="text-3xl font-bold text-gray-900">Gerenciar Pastas</h1>
-                        <p className="text-gray-600 mt-1">Organize os conteúdos em pastas por categoria</p>
+                        <h1 className="text-3xl font-bold text-gray-900">Gerenciar Módulos</h1>
+                        <p className="text-gray-600 mt-1">Organize os conteúdos em Módulos por categoria</p>
                     </div>
                 </div>
                 <Button
@@ -92,7 +92,7 @@ export default function FoldersPage() {
                     }}
                 >
                     <Plus className="mr-2 h-5 w-5" />
-                    Nova Pasta
+                    Nova Módulos
                 </Button>
             </div>
 
@@ -115,7 +115,7 @@ export default function FoldersPage() {
                 <Card className="bg-gray-50 border-bordo-200">
                     <CardContent className="p-4 flex items-end gap-4">
                         <div className="flex-1 space-y-2">
-                            <label className="text-sm font-medium text-gray-700">Nome da Pasta</label>
+                            <label className="text-sm font-medium text-gray-700">Nome da Módulos</label>
                             <Input
                                 value={currentFolder.name || ''}
                                 onChange={(e) => setCurrentFolder({ ...currentFolder, name: e.target.value })}
@@ -145,7 +145,7 @@ export default function FoldersPage() {
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {folders.length === 0 ? (
                         <div className="col-span-full py-12 text-center text-gray-500 bg-white rounded-lg border border-dashed border-gray-300">
-                            Nenhuma pasta encontrada nesta categoria.
+                            Nenhuma Módulos encontrada nesta categoria.
                         </div>
                     ) : (
                         folders.map((folder) => (

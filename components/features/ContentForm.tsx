@@ -75,7 +75,7 @@ export function ContentForm({ initialData, onSubmit, title }: ContentFormProps) 
             setNewFolderName('');
         } catch (error) {
             console.error('Error creating folder:', error);
-            alert('Erro ao criar pasta.');
+            alert('Erro ao criar Módulos.');
         }
     };
 
@@ -219,7 +219,7 @@ export function ContentForm({ initialData, onSubmit, title }: ContentFormProps) 
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-gray-700">Pasta (Opcional)</label>
+                                <label className="text-sm font-medium text-gray-700">Módulos (Opcional)</label>
                                 <div className="flex gap-2">
                                     <select
                                         className="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-bordo-500 focus:border-transparent"
@@ -227,7 +227,7 @@ export function ContentForm({ initialData, onSubmit, title }: ContentFormProps) 
                                         onChange={(e) => setFormData({ ...formData, folder_id: e.target.value || null })}
                                         disabled={!formData.category}
                                     >
-                                        <option value="">Nenhuma pasta</option>
+                                        <option value="">Nenhuma Módulos</option>
                                         {folders.map((folder) => (
                                             <option key={folder.id} value={folder.id}>
                                                 {folder.name}
@@ -240,7 +240,7 @@ export function ContentForm({ initialData, onSubmit, title }: ContentFormProps) 
                                         size="sm"
                                         disabled={!formData.category}
                                         onClick={() => setIsCreatingFolder(true)}
-                                        title="Criar nova pasta"
+                                        title="Criar nova Módulos"
                                     >
                                         <Plus className="h-4 w-4" />
                                     </Button>
@@ -250,7 +250,7 @@ export function ContentForm({ initialData, onSubmit, title }: ContentFormProps) 
                                         <Input
                                             value={newFolderName}
                                             onChange={(e) => setNewFolderName(e.target.value)}
-                                            placeholder="Nome da nova pasta"
+                                            placeholder="Nome da nova Módulos"
                                             className="h-8 text-sm"
                                             autoFocus
                                         />

@@ -71,13 +71,13 @@ export default function FolderPage() {
             <header className="mb-12 text-center">
                 <h1 className="text-4xl font-bold text-gray-900 mb-4">{folderName}</h1>
                 <p className="text-gray-600 text-lg">
-                    Conteúdos da pasta em {categoryName}
+                    Conteúdos do módulo em {categoryName}
                 </p>
             </header>
 
             {contents.length === 0 ? (
                 <div className="text-center py-20 bg-gray-50 rounded-2xl">
-                    <p className="text-xl text-gray-500">Nenhum conteúdo encontrado nesta pasta.</p>
+                    <p className="text-xl text-gray-500">Nenhum conteúdo encontrado neste módulo.</p>
                 </div>
             ) : (
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

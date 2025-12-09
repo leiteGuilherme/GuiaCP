@@ -70,7 +70,7 @@ export default function ContentListPage() {
                 <div className="flex gap-3">
                     <Link href="/admin/pastas">
                         <Button variant="outline" size="lg">
-                            Gerenciar Pastas
+                            Gerenciar Módulos
                         </Button>
                     </Link>
                     <Link href="/admin/conteudo/novo">

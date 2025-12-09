@@ -79,7 +79,7 @@ export default function CategoryPage() {
                 <div className="mb-12">
                     <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                         <FolderIcon className="h-6 w-6 text-bordo-600" />
-                        Pastas
+                        Módulos
                     </h2>
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                         {folders.map((folder) => (
